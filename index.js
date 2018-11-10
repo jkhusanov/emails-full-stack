@@ -5,7 +5,7 @@ const app = express();
 // diagram 001-request types explains the whole concept of code below
 // in short it just watches requests trying to access '/' and sends back JSON to whoever made this request  
 app.get('/', (req, res) => {
-  res.send({ hi: 'there' });
+  res.send({ hi: 'there!' });
 });
 
 

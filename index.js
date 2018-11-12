@@ -1,36 +1,17 @@
 const express = require('express');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const mongoose = require('mongoose');
 const keys = require('./config/keys');
+require('./services/passport');
+
+mongoose.connect(
+  keys.mongoURI,
+  { useNewUrlParser: true }
+);
 
 const app = express();
 
-// new creates new instance of the Google Strategy
-// passport uses that strategy
-// clientId and clientSecret is provided by Google Oauth service 
-
-passport.use(
-  new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback'
-  }, (accessToken, refreshToken, profile, done) => {
-    console.log('access token:', accessToken);
-    console.log('refreshToken:', refreshToken);
-    console.log('profile', profile);
-    console.log('done', done);
-  })
-);
-
-// in short it just watches requests trying to access this route '/auth/google' and tells passport to authenticate with google
-app.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email']
-  })
-);
-
-app.get('/auth/google/callback', passport.authenticate('google'));
+// authroutes takes app object and attaches two routes to it
+require('./routes/authRoutes')(app);
 
 // tells Node to listen this port below
 // either we get a port from Heroku environment variables and handle ports dynamically or just go with 5000 for local development

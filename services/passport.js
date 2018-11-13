@@ -10,6 +10,11 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
 // new creates new instance of the Google Strategy
 // passport uses that strategy
 // clientId and clientSecret is provided by Google Oauth service

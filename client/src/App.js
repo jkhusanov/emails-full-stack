@@ -9,13 +9,8 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>Hi there</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
+          <a className="App-link" href="/auth/google" target="_blank" rel="noopener noreferrer">
+            Sign In With Google
           </a>
         </header>
       </div>

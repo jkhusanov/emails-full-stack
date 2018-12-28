@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
+
 require('./models/User'); // order of this req and below one is important otherwise app will crash
 require('./services/passport');
 
@@ -12,7 +14,7 @@ mongoose.connect(
 );
 
 const app = express();
-
+app.use(bodyParser.json());
 // cookies
 app.use(
   cookieSession({
@@ -28,7 +30,7 @@ app.use(passport.session());
 
 // authroutes takes app object and attaches two routes to it
 require('./routes/authRoutes')(app);
-
+require('./routes/billingRoutes')(app);
 // tells Node to listen this port below
 // either we get a port from Heroku environment variables and handle ports dynamically or just go with 5000 for local development
 const PORT = process.env.PORT || 5000;

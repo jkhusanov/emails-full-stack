@@ -6,6 +6,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 
 require('./models/User'); // order of this req and below one is important otherwise app will crash
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });

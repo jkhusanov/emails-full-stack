@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const keys = require('./config/keys');
 
 require('./models/User'); // order of this req and below one is important otherwise app will crash
 require('./models/Survey');
@@ -26,11 +26,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// authroutes takes app object and attaches two routes to it
+// Routes takes app object and attaches the routes to it
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
-// tells Node to listen this port below
-// either we get a port from Heroku environment variables and handle ports dynamically or just go with 5000 for local development
+require('./routes/surveyRoutes')(app);
 
 // Runs only if we are in production (heroku)
 if (process.env.NODE_ENV === 'production') {
@@ -42,11 +41,15 @@ if (process.env.NODE_ENV === 'production') {
   // if it doesn't recognize the route
   // in other words, with will run if all serve routes fail / doesn't exist.
   // it assumes that React Router (library) know what to do with the incoming route
+  // eslint-disable-next-line global-require
   const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+// Tells Node to listen this port below
+// either we get a port from Heroku environment variables and handle ports dynamically or just go with 5000 for local development
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

@@ -10,7 +10,7 @@ module.exports = app => {
   // First
   // Check if user is logged in
   // Check if user has enough credits
-  app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
+  app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
     const survey = new Survey({
@@ -24,6 +24,19 @@ module.exports = app => {
 
     // Place to send an email
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    mailer.send();
+
+    try {
+      await mailer.send();
+      await survey.save();
+
+      // Update user's credits and save
+      req.user.credits -= 1;
+      const user = await req.user.save();
+
+      // Send back updated user so it reflects on front-end
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
   });
 };

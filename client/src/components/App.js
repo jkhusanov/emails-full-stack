@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux'; // gives certain components ability to call action creators
 import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
+    const { fetchUser } = this.props;
+    fetchUser();
   }
+
   render() {
     return (
       // materialize css requires a parent div with the class named container
       <div className="container">
-        {/* BrowserRouter gets only one child ,*/}
-        {/* and path="/" means root route, exact={true} makes sure current url is exactly as path*/}
+        {/* BrowserRouter gets only one child , */}
+        {/* and path="/" means root route, exact={true} makes sure current url is exactly as path */}
         <BrowserRouter>
           <div>
             <Header />
@@ -30,6 +34,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  fetchUser: PropTypes.func.isRequired,
+};
 
 export default connect(
   null,

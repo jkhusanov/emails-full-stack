@@ -31,11 +31,11 @@ class SurveyForm extends Component {
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, onSurveySubmit } = this.props;
 
     return (
       <div>
-        <form onSubmit={handleSubmit(values => console.log(values))}>
+        <form onSubmit={handleSubmit(onSurveySubmit)}>
           {this.renderFields()}
           <Link to="/surveys" className="red btn-flat white-text">
             Cancel
@@ -66,6 +66,7 @@ function validate(values) {
 
 SurveyForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  onSurveySubmit: PropTypes.func.isRequired,
 };
 
 export default reduxForm({

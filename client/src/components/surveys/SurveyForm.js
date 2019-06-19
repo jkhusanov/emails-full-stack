@@ -8,20 +8,15 @@ import PropTypes from 'prop-types';
 import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
 
-const FIELDS = [
-  { label: 'Survey Title', name: 'title' },
-  { label: 'Subject Line', name: 'subject' },
-  { label: 'Email Body', name: 'body' },
-  { label: 'Recipient List', name: 'emails' },
-];
+import formFields from './formFields';
 
 class SurveyForm extends Component {
   renderFields = () => {
-    return _.map(FIELDS, field => {
+    return _.map(formFields, field => {
       return (
         <Field
           key={field.name}
-          type="text"
+          type={field.type}
           name={field.name}
           label={field.label}
           component={SurveyField}
@@ -55,7 +50,7 @@ function validate(values) {
 
   errors.emails = validateEmails(values.emails || '');
 
-  _.each(FIELDS, ({ name }) => {
+  _.each(formFields, ({ name }) => {
     if (!values[name]) {
       errors[name] = `You must provide a value for ${name}`;
     }
@@ -72,4 +67,5 @@ SurveyForm.propTypes = {
 export default reduxForm({
   validate,
   form: 'surveyForm',
+  destroyOnUnmount: false,
 })(SurveyForm);

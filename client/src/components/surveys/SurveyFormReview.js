@@ -7,7 +7,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import formFields from './formFields';
 
-const SurveyFormReview = ({ onCancel, formValues }) => {
+import * as actions from '../../actions';
+
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -21,8 +23,16 @@ const SurveyFormReview = ({ onCancel, formValues }) => {
     <div>
       <h5>Please review your entries</h5>
       {reviewFields}
-      <button className="yellow darken-3 btn-flat" onClick={onCancel} type="button">
+      <button className="yellow darken-3 white-text btn-flat" onClick={onCancel} type="button">
         Back
+      </button>
+      <button
+        onClick={() => submitSurvey(formValues)}
+        className="green btn-flat right white-text "
+        type="button"
+      >
+        Send Survey
+        <i className="material-icons right">email</i>
       </button>
     </div>
   );
@@ -31,6 +41,7 @@ const SurveyFormReview = ({ onCancel, formValues }) => {
 SurveyFormReview.propTypes = {
   onCancel: PropTypes.func.isRequired,
   formValues: PropTypes.object.isRequired,
+  submitSurvey: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -39,4 +50,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SurveyFormReview);
+export default connect(
+  mapStateToProps,
+  actions
+)(SurveyFormReview);

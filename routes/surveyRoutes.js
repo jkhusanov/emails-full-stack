@@ -11,6 +11,11 @@ module.exports = app => {
     res.send('Thanks for voting!');
   });
 
+  app.post('/api/surveys/webhooks', (req, res) => {
+    console.log(req.body);
+    res.send({});
+  });
+
   // First
   // Check if user is logged in
   // Check if user has enough credits

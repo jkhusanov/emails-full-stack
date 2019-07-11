@@ -5,15 +5,14 @@
   "main": "index.js",
   "engines": {
     "node": "10.16.0",
-    "npm": "6.9.0",
-    "yarn": "1.17.0"
+    "npm": "6.9.0"
   },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --cwd client yarn install && yarn --cwd client yarn run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "lt -p 5000 -s emailstestforsendgrida"
   },
   "author": "",

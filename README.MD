@@ -1,6 +1,6 @@
 # Emails - Full-Stack application
 
-One step forward in learning path and one step closer to a new startup!
+One step forward in [learning path](https://www.udemy.com/node-with-react-fullstack-web-development) and one step closer to new projects!
 
 ## Main Goal
 
@@ -13,3 +13,27 @@ This repository is solely for learning purposes. Real project will be in a steal
 - Google OAuth with passportjs - authentication
 - React & Redux - frontend
 - Heroku & mLab - deployment
+
+## Demo
+
+### [Try it on heroku](https://emails-full-stack.herokuapp.com)
+
+<img src="./demo/1.png">
+
+![Demo](https://github.com/jkhusanov/emails-full-stack/blob/master/demo/demo.gif)
+
+## Getting started
+
+```
+git clone https://github.com/jkhusanov/emails-full-stack
+
+cd emails-full-stack
+
+npm run everything
+
+npm run dev
+```
+
+## Feedback
+
+In case you have any feedback or questions, feel free to open a new issue on this repo or reach out to me [**@jkhusanov**](https://github.com/jkhusanov) on Github.

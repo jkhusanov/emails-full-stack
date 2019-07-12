@@ -18,9 +18,11 @@ This repository is solely for learning purposes. Real projects will be in a stea
 
 ### [Try it on heroku](https://emails-full-stack.herokuapp.com)
 
-<img src="./demo/1.png">
-
 ![Demo](https://github.com/jkhusanov/emails-full-stack/blob/master/demo/demo.gif)
+
+#### Screenshot
+
+<img src="./demo/1.png">
 
 ## Getting started
 

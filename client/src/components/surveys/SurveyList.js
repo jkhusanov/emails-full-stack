@@ -17,7 +17,9 @@ class SurveyList extends Component {
             <p className="right">Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
           </div>
           <div className="card-action">
+            {/* eslint-disable-next-line */}
             <a>Yes: {survey.yes}</a>
+            {/* eslint-disable-next-line */}
             <a>No: {survey.no}</a>
           </div>
         </div>

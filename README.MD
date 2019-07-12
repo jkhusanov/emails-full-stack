@@ -4,7 +4,7 @@ One step forward in [learning path](https://www.udemy.com/node-with-react-fullst
 
 ## Main Goal
 
-This repository is solely for learning purposes. Real project will be in a stealth mode 👻
+This repository is solely for learning purposes. Real projects will be in a stealth mode 👻
 
 ## Tech Stack
 

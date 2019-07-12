@@ -12,9 +12,13 @@ This repository is solely for learning purposes. Real projects will be in a stea
 - MongoDB with mongoose.js - NoSQL database
 - Google OAuth with passportjs - authentication
 - React & Redux - frontend
-- Heroku & mLab - deployment
+- Heroku & mLab, SendGrid - deployment
 
 ## Demo
+
+- Users can signup with their google accounts.
+- Create and send surveys to emails.
+- Gather survey results
 
 ### [Try it on heroku](https://emails-full-stack.herokuapp.com)
 
@@ -25,6 +29,8 @@ This repository is solely for learning purposes. Real projects will be in a stea
 <img src="./demo/1.png">
 
 ## Getting started
+
+Assuming you installed and configured (including keys) all the tools and services above.
 
 ```
 git clone https://github.com/jkhusanov/emails-full-stack

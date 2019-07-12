@@ -1,6 +1,6 @@
 # Emails - Full-Stack application
 
-One step forward in [learning path](https://www.udemy.com/node-with-react-fullstack-web-development) and one step closer to new projects!
+One step forward in [learning path](https://www.udemy.com/node-with-react-fullstack-web-development), one step closer to new projects!
 
 ## Main Goal
 
